@@ -6,7 +6,7 @@ module load fastqc
 #start the loop
 for fqfile in *.fq.gz; do
   #set the job parameters
-  sbatch -J ${fqfile}_fastqc -p general -n 8 --mem=20g -t 1-00:00:00
+  sbatch -J ${fqfile}_fastqc -p general -n 8 --mem=20g -t 1-00:00:00 \
     --wrap="fastqc --noextract --outdir fastqc -t 8 $fqfile"
 done
 
